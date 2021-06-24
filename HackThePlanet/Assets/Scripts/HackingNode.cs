@@ -9,8 +9,10 @@ public class HackingNode : MonoBehaviour
 {
     #region Fields
 
-    //[HideInInspector]
+    [HideInInspector]
     public Vector3 m_position;
+
+    [Header("Node Settings")]
 
     [SerializeField]
     public float m_timeValue = 0;
@@ -24,6 +26,8 @@ public class HackingNode : MonoBehaviour
     [SerializeField]
     public HackingNode[] m_connections;
 
+    [Header("Sprite Settings")]
+
     [SerializeField]
     public bool m_randomSprite;
 
@@ -32,6 +36,9 @@ public class HackingNode : MonoBehaviour
 
     [SerializeField]
     public Sprite m_selectedSprite;
+
+    [SerializeField]
+    public Sprite[] m_specialSprites;
 
     #endregion
 
@@ -63,16 +70,27 @@ public class HackingNode : MonoBehaviour
 
     public void Start()
     {
+        // Get node position
         m_position = gameObject.transform.position;
-        
-        if (m_randomSprite)
+
+        // Set time text
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = m_timeValue.ToString();
+
+        // Set sprite
+        if (m_randomSprite && !m_isStartNode && !m_isEndNode)
         {
             int spriteID = Random.Range(0, m_nodeSprites.Length);
             m_selectedSprite = m_nodeSprites[spriteID];
         }
+        else if (m_isStartNode)
+        {
+            m_selectedSprite = m_specialSprites[0];
+        }
+        else if (m_isEndNode)
+        {
+            m_selectedSprite = m_specialSprites[1];
+        }
 
         gameObject.GetComponent<Image>().sprite = m_selectedSprite;
-
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = m_timeValue.ToString();
     }
 }

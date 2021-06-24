@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LineConnection : MonoBehaviour
 {
     public GameObject linePrefab;
+    public GameObject lineHolder;
 
     private bool hasDrawn = false;
 
@@ -18,20 +19,28 @@ public class LineConnection : MonoBehaviour
         }
     }
 
-    public void DrawLine(Vector3 a_node1, Vector3 a_node2, RectTransform a_line)
+    public void DrawLine(GameObject a_node1, GameObject a_node2)
     {
-        a_line.transform.position = a_node1;
+        GameObject angleBar = Instantiate(linePrefab, a_node2.transform.position, Quaternion.identity);
 
-        float distance = Vector3.Distance(a_node1, a_node2) + 10;
+        // Calculate angle
+        Vector2 diference = a_node1.transform.position - a_node2.transform.position;
+        float sign = (a_node1.transform.position.y < a_node2.transform.position.y) ? -1.0f : 1.0f;
+        float angle = Vector2.Angle(Vector2.right, diference) * sign;
+        angleBar.transform.Rotate(0, 0, angle);
 
-        a_line.transform.position = (a_node1 + a_node2) / 2;
-        a_line.rect.Set((a_node1.x + a_node2.x) / 2, (a_node1.y + a_node2.y) / 2, distance, 0.005f);
+        // Calculate length of bar
+        float height = 2;
+        float width = Vector2.Distance(a_node2.transform.position, a_node1.transform.position);
+        angleBar.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
 
-        Vector3 dir = a_node2 - a_node1;
-        Vector2 dirV2 = new Vector2(dir.x, dir.y);
-        float angle = Vector2.SignedAngle(dirV2, Vector2.down);
+        // Calculate midpoint position
+        float newposX = a_node2.transform.position.x + (a_node1.transform.position.x - a_node2.transform.position.x) / 2;
+        float newposY = a_node2.transform.position.y + (a_node1.transform.position.y - a_node2.transform.position.y) / 2;
+        angleBar.transform.position = new Vector3(newposX, newposY, a_node1.transform.position.z);
 
-        a_line.transform.rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        // Set bar parent
+        angleBar.transform.SetParent(lineHolder.transform, true);
     }
 
     public void DrawConnections()
@@ -49,11 +58,7 @@ public class LineConnection : MonoBehaviour
             {
                 foreach (HackingNode connection in node.m_connections)
                 {
-                    GameObject line = Instantiate(linePrefab, node.gameObject.transform.parent);
-                    line.GetComponent<LineDrawer>().DrawLine(line, node.m_position, connection.m_position);
-
-                    //GameObject line = Instantiate(linePrefab, node.gameObject.transform.parent);
-                    //DrawLine(node.m_position, connection.m_position, line.GetComponent<RectTransform>());
+                    DrawLine(node.gameObject, connection.gameObject);
                 }
             }
         }
