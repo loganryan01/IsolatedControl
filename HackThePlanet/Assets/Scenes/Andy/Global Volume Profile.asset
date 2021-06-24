@@ -62,8 +62,8 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   temperature:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 17
     min: -100
     max: 100
   tint:
@@ -87,6 +87,7 @@ MonoBehaviour:
   - {fileID: 8994720306191352490}
   - {fileID: 241456227011966607}
   - {fileID: -6626575359002162167}
+  - {fileID: -2168768016324692639}
 --- !u!114 &241456227011966607
 MonoBehaviour:
   m_ObjectHideFlags: 3
