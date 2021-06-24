@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class HackingNode : MonoBehaviour
@@ -21,6 +23,15 @@ public class HackingNode : MonoBehaviour
 
     [SerializeField]
     public HackingNode[] m_connections;
+
+    [SerializeField]
+    public bool m_randomSprite;
+
+    [SerializeField]
+    public Sprite[] m_nodeSprites;
+
+    [SerializeField]
+    public Sprite m_selectedSprite;
 
     #endregion
 
@@ -53,10 +64,15 @@ public class HackingNode : MonoBehaviour
     public void Start()
     {
         m_position = gameObject.transform.position;
-    }
+        
+        if (m_randomSprite)
+        {
+            int spriteID = Random.Range(0, m_nodeSprites.Length);
+            m_selectedSprite = m_nodeSprites[spriteID];
+        }
 
-    public void Update()
-    {
-        //m_position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+        gameObject.GetComponent<Image>().sprite = m_selectedSprite;
+
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = m_timeValue.ToString();
     }
 }
