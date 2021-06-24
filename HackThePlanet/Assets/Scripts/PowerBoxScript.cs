@@ -76,7 +76,7 @@ public class PowerBoxScript : MonoBehaviour
     // Check if an animation is playing
     bool AnimationIsPlaying()
     {
-        Animator[] switchAnimators = new Animator[5];
+        Animator[] switchAnimators = new Animator[switches.Length];
 
         for (int i = 0; i < switchAnimators.Length; i++)
         {
@@ -97,7 +97,7 @@ public class PowerBoxScript : MonoBehaviour
     {
         resetting = true;
         
-        Animator[] switchAnimators = new Animator[5];
+        Animator[] switchAnimators = new Animator[switches.Length];
 
         yield return new WaitForSeconds(1.0f);
 
