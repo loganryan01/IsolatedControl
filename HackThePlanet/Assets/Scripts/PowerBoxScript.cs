@@ -7,10 +7,8 @@ public class PowerBoxScript : MonoBehaviour
 {
     [SerializeField]
     int overallNumber;
-    int currentNumber;
 
-    [SerializeField]
-    Text overallNumberText;
+    int currentNumber;
 
     [SerializeField]
     int[] switchValues;
@@ -18,23 +16,12 @@ public class PowerBoxScript : MonoBehaviour
     [SerializeField]
     GameObject[] switches;
     
-    [SerializeField]
-    Text[] switchValueTexts;
-    
     Animator animator;
 
     bool resetting = false;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        overallNumberText.text = overallNumber.ToString();
-        
-        for (int i = 0; i < switchValueTexts.Length; i++)
-        {
-            switchValueTexts[i].text = switchValues[i].ToString();
-        }
-    }
+
+    [HideInInspector]
+    public bool puzzleCompleted;
 
     // Update is called once per frame
     void Update()
@@ -70,6 +57,11 @@ public class PowerBoxScript : MonoBehaviour
         if (!resetting && !AnimationIsPlaying() && currentNumber > overallNumber)
         {
             StartCoroutine(ResetSwitches());
+        }
+
+        if (currentNumber == overallNumber)
+        {
+            puzzleCompleted = true;
         }
     }
 

@@ -8,6 +8,8 @@ public class CableScript : MonoBehaviour
     [SerializeField]
     float mouseZPosition = 10.0f;
 
+    
+
     public GameObject fixedCableJack;
     public GameObject moveableCablePart;
     public GameObject cablePort;
@@ -21,7 +23,7 @@ public class CableScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 startPosition = new Vector3(fixedCableJack.transform.position.x * 10, fixedCableJack.transform.position.y * 10, fixedCableJack.transform.position.z * 10);
+        Vector3 startPosition = new Vector3(fixedCableJack.transform.position.x /** 10*/, fixedCableJack.transform.position.y /** 10*/, fixedCableJack.transform.position.z /** 10*/);
         startPosition -= new Vector3(0, 0, 1);
 
         spline.nodes[0].Position = startPosition;
@@ -31,7 +33,7 @@ public class CableScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 movePosition = new Vector3(moveableCablePart.transform.position.x * 10, moveableCablePart.transform.position.y * 10, moveableCablePart.transform.position.z * 10);
+        Vector3 movePosition = new Vector3(moveableCablePart.transform.position.x /** 10*/, moveableCablePart.transform.position.y /** 10*/, moveableCablePart.transform.position.z /** 10*/);
         movePosition -= new Vector3(0, 0, 1);
 
         spline.nodes[1].Position = movePosition;
@@ -51,6 +53,8 @@ public class CableScript : MonoBehaviour
             if (rayHit && hit.collider.gameObject.name == moveableCablePart.name)
             {
                 moveableCablePart.transform.position = v3;
+
+                
             }
         }
     }

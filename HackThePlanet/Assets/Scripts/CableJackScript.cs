@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CableJackScript : MonoBehaviour
 {
+    [SerializeField]
+    ServerScript serverScript;
     CableScript cableScript;
     
     // Start is called before the first frame update
@@ -19,6 +21,8 @@ public class CableJackScript : MonoBehaviour
             cableScript.interactable = false;
 
             cableScript.moveableCablePart.transform.position = cableScript.cablePort.transform.position;
+
+            serverScript.completedWires++;
         }
     }
 }

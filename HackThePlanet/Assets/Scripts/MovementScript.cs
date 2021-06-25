@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
+    public PowerBoxScript powerBox;
+    public ServerScript serverScript;
+    
     public bool toServers = false;
-    public bool toDeskFromServers = false;
     public bool toPowerBox = false;
-    public bool toDeskFromPowerBox = false;
+    public bool toWindow = false;
 
     bool audioIsPlaying = false;
     Animator animator;
@@ -28,7 +30,7 @@ public class MovementScript : MonoBehaviour
             animator.SetBool("GoToServers", true);
         }
 
-        if (toDeskFromServers)
+        if (serverScript.puzzleCompleted)
         {
             animator.SetBool("GoToDeskFromServers", true);
         }
@@ -38,15 +40,21 @@ public class MovementScript : MonoBehaviour
             animator.SetBool("GoToPowerBox", true);
         }
 
-        if (toDeskFromPowerBox)
+        if (powerBox.puzzleCompleted)
         {
             animator.SetBool("GoToDeskFromPowerBox", true);
+        }
+
+        if (toWindow)
+        {
+            animator.SetBool("GoToWindow", true);
         }
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("ToServers") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && !audioIsPlaying ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("FromServerToDesk") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && !audioIsPlaying ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("ToPowerBox") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && !audioIsPlaying ||
-            animator.GetCurrentAnimatorStateInfo(0).IsName("FromPowerBoxToDesk") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && !audioIsPlaying)
+            animator.GetCurrentAnimatorStateInfo(0).IsName("FromPowerBoxToDesk") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && !audioIsPlaying ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("ToWindow") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && !audioIsPlaying)
         {
             audioIsPlaying = true;
             audioSource.Play();
@@ -54,7 +62,8 @@ public class MovementScript : MonoBehaviour
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("ToServers") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && audioIsPlaying ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("FromServerToDesk") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && audioIsPlaying ||
             animator.GetCurrentAnimatorStateInfo(0).IsName("ToPowerBox") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && audioIsPlaying ||
-            animator.GetCurrentAnimatorStateInfo(0).IsName("FromPowerBoxToDesk") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && audioIsPlaying)
+            animator.GetCurrentAnimatorStateInfo(0).IsName("FromPowerBoxToDesk") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && audioIsPlaying ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("ToWindow") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && audioIsPlaying)
         {
             audioIsPlaying = false;
             audioSource.Stop();
