@@ -3,7 +3,12 @@ guid: 8c67ad6cb0d5d2e498f084364fae7a93
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_HackThePlanet
+    second: {fileID: 2100000, guid: a01612c7d94260747a82025809098213, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
