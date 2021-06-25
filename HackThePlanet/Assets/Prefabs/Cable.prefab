@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da4b38685f2e494a8a60d8c12cfc276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseZPosition: 11
+  mouseZPosition: 1.5
   fixedCableJack: {fileID: 8365983389819221895}
   moveableCablePart: {fileID: 8365983389201778373}
   cablePort: {fileID: 0}
@@ -81,7 +81,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8365983389201778373}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 3, y: 0, z: 1}
+  m_LocalPosition: {x: 3.7, y: 4, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8365983388446528050}
@@ -314,7 +314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8365983389819221895}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.64, y: 0, z: 1}
+  m_LocalPosition: {x: -3.7, y: 4, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8365983388446528050}
@@ -460,33 +460,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes:
-  - position: {x: 0, y: 0, z: 0}
-    direction: {x: 0, y: 0, z: 0}
+  - position: {x: -3.7, y: 4, z: -5}
+    direction: {x: -3.7, y: 4, z: -5}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
-  - position: {x: 3, y: 0, z: 0}
-    direction: {x: 3, y: 0, z: 5}
+  - position: {x: 3.7, y: 4, z: -5}
+    direction: {x: 3.7, y: 4, z: 0}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
   curves:
   - n1:
-      position: {x: 0, y: 0, z: 0}
-      direction: {x: 0, y: 0, z: 0}
+      position: {x: -3.7, y: 4, z: -5}
+      direction: {x: -3.7, y: 4, z: -5}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     n2:
-      position: {x: 3, y: 0, z: 0}
-      direction: {x: 3, y: 0, z: 5}
+      position: {x: 3.7, y: 4, z: -5}
+      direction: {x: 3.7, y: 4, z: 0}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     Changed:
       m_PersistentCalls:
         m_Calls: []
-  Length: 5.77078
+  Length: 9.338334
   isLoop: 0
   CurveChanged:
     m_PersistentCalls:
