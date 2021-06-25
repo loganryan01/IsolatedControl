@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 733c1aaeae6447547829e08eed145750
+guid: 581110235937b4b45b69b47ff8446eb3
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_HackThePlanet
+      name: M_Master
     second: {fileID: 2100000, guid: a01612c7d94260747a82025809098213, type: 2}
   materials:
     materialImportMode: 1
