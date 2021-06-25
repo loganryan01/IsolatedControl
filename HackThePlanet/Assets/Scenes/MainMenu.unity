@@ -827,7 +827,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 426691272}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1531240307}
+        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &426691272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,7 +2585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 1747944486}
   fadeEffect: {fileID: 1747944490}
-  gameScene: {fileID: 102900000, guid: f4c02843f0963824f86b3ec4af85c617, type: 3}
+  gameScene: {fileID: 102900000, guid: 05b9dca31cbdbf041a67d5c6585cf08b, type: 3}
 --- !u!1 &1532447421
 GameObject:
   m_ObjectHideFlags: 0

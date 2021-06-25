@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
@@ -10,12 +9,6 @@ public class MainMenuScript : MonoBehaviour
     public Animator fadeEffect;
 
     public Object gameScene;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -32,9 +25,12 @@ public class MainMenuScript : MonoBehaviour
 
     public void FadeEffect()
     {
-        Debug.Log("Fading");
-
         fade.SetActive(true);
         fadeEffect.enabled = true;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
