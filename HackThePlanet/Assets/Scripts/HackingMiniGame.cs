@@ -12,15 +12,23 @@ public class HackingMiniGame : MonoBehaviour
     public GameObject player;
 
     private HackingNode enemyStartNode;
+    private HackingNode enemyCurrentNode;
     public GameObject enemy;
+
+    private List<HackingNode> enemyVisited = new List<HackingNode>();
 
     private HackingNode endNode;
 
     public bool isGameFinished = false;
-    private bool updateNodeHover = true;
+    public bool enemyTurn = false;
+    public bool hasGameStarted = false;
+
+    public GameObject startScreen;
 
     private void Start()
     {
+        startScreen.SetActive(true);
+
         allNodes = FindObjectsOfType<HackingNode>();
 
         foreach (HackingNode node in allNodes)
@@ -45,50 +53,146 @@ public class HackingMiniGame : MonoBehaviour
         enemy.transform.position = enemyStartNode.transform.position;
 
         playerCurrentNode = playerStartNode;
+        enemyCurrentNode = enemyStartNode;
+        enemyVisited.Add(enemyCurrentNode);
+    }
 
-        //UpdateNodeHover();
+    private void Update()
+    {
+        if (hasGameStarted)
+        {
+            startScreen.SetActive(false);
+            MoveEnemy();
+
+            if (isGameFinished)
+            {
+                FinishGameUI();
+            }
+        }
+    }
+
+    public void StartGame()
+    {
+        hasGameStarted = true;
     }
 
     public void OnNodeSelect(HackingNode a_selectedNode)
     {
         if (a_selectedNode == playerCurrentNode)
         {
+            StartCoroutine(InvalidNode(playerCurrentNode));
             return;
         }
+
+        bool notConnectedNode = false;
 
         foreach (HackingNode connection in playerCurrentNode.m_connections)
         {
             if (a_selectedNode == connection)
             {
-                a_selectedNode.GetComponent<Button>().interactable = false;
-                player.transform.position = a_selectedNode.transform.position;
-                playerCurrentNode = a_selectedNode;
+                StartCoroutine(TurnWaitTimePlayer(a_selectedNode));
+                notConnectedNode = false;
+                break;
             }
+
+            notConnectedNode = true;
+        }
+
+        if (notConnectedNode)
+        {
+            StartCoroutine(InvalidNode(a_selectedNode));
         }
 
         if (a_selectedNode == endNode)
         {
             isGameFinished = true;
         }
-
-        Debug.Log(a_selectedNode);
     }
 
-    private void UpdateNodeHover()
+    IEnumerator InvalidNode(HackingNode a_node)
     {
-        foreach (HackingNode node in allNodes)
+        GameObject invalidImage = a_node.transform.Find("InvalidImage").gameObject;
+        invalidImage.SetActive(true);
+
+        // Wait for given amount of time
+        yield return new WaitForSeconds(0.8f);
+
+        invalidImage.SetActive(false);
+    }
+
+    private void MoveEnemy()
+    {
+        if (enemyCurrentNode != endNode)
         {
-            foreach (HackingNode connection in playerCurrentNode.m_connections)
+            float smallestTime = 10;
+            HackingNode node = new HackingNode();
+
+            foreach (HackingNode connection in enemyCurrentNode.m_connections)
             {
-                if (node == connection)
+                if (connection.m_timeValue < smallestTime && !enemyVisited.Contains(connection) || connection == endNode)
                 {
-                    node.GetComponentInChildren<Button>().interactable = true;
-                }
-                else
-                {
-                    node.GetComponentInChildren<Button>().interactable = false;
+                    smallestTime = connection.m_timeValue;
+
+                    if (connection == endNode)
+                    {
+                        node = endNode;
+                        smallestTime = endNode.m_timeValue;
+                        break;
+                    }
+                    node = connection;
                 }
             }
+
+            StartCoroutine(TurnWaitTimeEnemy(node));
         }
+        else
+        {
+            isGameFinished = true;
+        }
+    }
+
+    IEnumerator TurnWaitTimePlayer(HackingNode a_node)
+    {
+        yield return new WaitForSeconds(a_node.m_timeValue);
+
+        player.transform.position = a_node.transform.position;
+        playerCurrentNode = a_node;
+    }
+
+    IEnumerator TurnWaitTimeEnemy(HackingNode a_node)
+    {
+        yield return new WaitForSecondsRealtime(a_node.m_timeValue * 2);
+
+        enemyVisited.Add(a_node);
+        enemy.transform.position = a_node.transform.position;
+        enemyCurrentNode = a_node;
+    }
+
+    private void FinishGameUI()
+    {
+
+    }
+
+    // Used to convert hex values to decimal values and normalise them 
+    private float HexToFloatNormalised(string a_hex)
+    {
+        int dec = System.Convert.ToInt32(a_hex, 16);
+        return dec / 255f;
+    }
+
+    // Using the given hex string it returns it's color
+    private Color GetColourFromString(string a_hexString)
+    {
+        float red = HexToFloatNormalised(a_hexString.Substring(0, 2));
+        float green = HexToFloatNormalised(a_hexString.Substring(2, 2));
+        float blue = HexToFloatNormalised(a_hexString.Substring(4, 2));
+        float alpha = 1f;
+
+        if (a_hexString.Length >= 8)
+        {
+            alpha = HexToFloatNormalised(a_hexString.Substring(6, 2));
+        }
+
+        return new Color(red, green, blue, alpha);
     }
 }

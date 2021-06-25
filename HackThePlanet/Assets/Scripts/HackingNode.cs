@@ -84,13 +84,15 @@ public class HackingNode : MonoBehaviour
             int spriteID = Random.Range(0, m_nodeSprites.Length);
             m_selectedSprite = m_nodeSprites[spriteID];
         }
-        else if (m_isStartNode)
+        else if (m_isStartNode || m_isEnemyStart)
         {
             m_selectedSprite = m_specialSprites[0];
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "0";
         }
         else if (m_isEndNode)
         {
             m_selectedSprite = m_specialSprites[1];
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "1";
         }
 
         gameObject.GetComponent<Image>().sprite = m_selectedSprite;
