@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HackingMiniGame : MonoBehaviour
 {
@@ -20,14 +21,17 @@ public class HackingMiniGame : MonoBehaviour
     private HackingNode endNode;
 
     public bool isGameFinished = false;
-    public bool enemyTurn = false;
+    public bool hasEnemyWon = false;
+    private bool moveEnemy = true;
     public bool hasGameStarted = false;
 
     public GameObject startScreen;
+    public GameObject endScreen;
 
     private void Start()
     {
         startScreen.SetActive(true);
+        endScreen.SetActive(false);
 
         allNodes = FindObjectsOfType<HackingNode>();
 
@@ -63,11 +67,6 @@ public class HackingMiniGame : MonoBehaviour
         {
             startScreen.SetActive(false);
             MoveEnemy();
-
-            if (isGameFinished)
-            {
-                FinishGameUI();
-            }
         }
     }
 
@@ -148,12 +147,14 @@ public class HackingMiniGame : MonoBehaviour
         else
         {
             isGameFinished = true;
+            hasEnemyWon = true;
+            StartCoroutine(EndGameDelay());
         }
     }
 
     IEnumerator TurnWaitTimePlayer(HackingNode a_node)
     {
-        yield return new WaitForSeconds(a_node.m_timeValue);
+        yield return new WaitForSeconds(a_node.m_timeValue + 0.2f);
 
         player.transform.position = a_node.transform.position;
         playerCurrentNode = a_node;
@@ -168,9 +169,30 @@ public class HackingMiniGame : MonoBehaviour
         enemyCurrentNode = a_node;
     }
 
+    IEnumerator EndGameDelay()
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        FinishGameUI();
+    }
+
     private void FinishGameUI()
     {
+        endScreen.SetActive(true);
 
+        Canvas canvas = endScreen.GetComponentInChildren<Canvas>();
+        TextMeshProUGUI gameState = canvas.GetComponentInChildren<TextMeshProUGUI>();
+        Image background = canvas.transform.Find("Background").GetComponent<Image>();
+
+        if (hasEnemyWon)
+        {
+            gameState.text = "You Failed!";
+            background.color = Color.red;
+        }
+        else if (!hasEnemyWon)
+        {
+            gameState.text = "You Succeeded!";
+            background.color = Color.green;
+        }
     }
 
     // Used to convert hex values to decimal values and normalise them 
