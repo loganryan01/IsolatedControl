@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
 public class HackingNode : MonoBehaviour
 {
     #region Fields
@@ -22,6 +21,9 @@ public class HackingNode : MonoBehaviour
 
     [SerializeField]
     public bool m_isEndNode = false;
+
+    [SerializeField]
+    public bool m_isEnemyStart = false;
 
     [SerializeField]
     public HackingNode[] m_connections;
