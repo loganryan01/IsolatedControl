@@ -29,6 +29,8 @@ public class HackingMiniGame : MonoBehaviour
     public GameObject startScreen;
     public GameObject endScreen;
 
+    public AudioSource beepSound;
+
     private void Start()
     {
         startScreen.SetActive(true);
@@ -66,12 +68,18 @@ public class HackingMiniGame : MonoBehaviour
     {
         if (hasGameStarted)
         {
+            if (beepSound.isPlaying == false)
+            {
+                beepSound.Play();
+            }
+
             startScreen.SetActive(false);
             MoveEnemy();
         }
 
         if (isGameFinished)
         {
+            beepSound.Stop();
             FinishGameUI();
         }
     }
