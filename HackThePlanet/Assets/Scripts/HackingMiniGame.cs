@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HackingMiniGame : MonoBehaviour
 {
@@ -198,6 +199,11 @@ public class HackingMiniGame : MonoBehaviour
             gameState.text = "You Succeeded!";
             background.color = Color.green;
         }
+    }
+
+    public void ExitMiniGame()
+    {
+        SceneManager.LoadScene("MainGame");
     }
 
     // Used to convert hex values to decimal values and normalise them 
