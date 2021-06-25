@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291391922}
   m_LocalRotation: {x: 0.55995715, y: -0, z: -0, w: 0.82852155}
-  m_LocalPosition: {x: 0.17015883, y: 2.448, z: -0.87590563}
+  m_LocalPosition: {x: -1, y: 2.344, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -419,7 +419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822490421}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -502,13 +502,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335498094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0, y: 0.74772954, z: -0, w: 0.66400355}
+  m_LocalPosition: {x: 0, y: 1.218, z: 5.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 96.788, z: 0}
 --- !u!114 &1335498098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1372190069}
   - component: {fileID: 1372190068}
+  - component: {fileID: 1372190070}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -632,6 +633,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
+--- !u!114 &1372190070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372190067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f7d6f963144be448075c9c3c3d1eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFlickering: 1
+  timeDelay: 0
+  range1: 0.01
+  range2: 0.1
+  range3: 0.01
+  range4: 0.1
 --- !u!1 &1990297412
 GameObject:
   m_ObjectHideFlags: 0
