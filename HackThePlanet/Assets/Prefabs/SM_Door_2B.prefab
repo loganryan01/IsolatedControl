@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1731159713644880031}
   m_Layer: 0
-  m_Name: PivotHolder
+  m_Name: SM_Door_2B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ Transform:
   - {fileID: 240915530375830079}
   m_Father: {fileID: 1731159713644880031}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -106.614, z: 0}
 --- !u!111 &8607065808215720466
 Animation:
   m_ObjectHideFlags: 0
