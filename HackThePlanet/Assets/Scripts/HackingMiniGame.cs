@@ -106,11 +106,12 @@ public class HackingMiniGame : MonoBehaviour
         if (notConnectedNode)
         {
             StartCoroutine(InvalidNode(a_selectedNode));
+            return;
         }
 
         if (a_selectedNode == endNode)
         {
-            isGameFinished = true;
+            StartCoroutine(EndGameDelay());
         }
     }
 
@@ -177,8 +178,10 @@ public class HackingMiniGame : MonoBehaviour
 
     IEnumerator EndGameDelay()
     {
+        hasGameStarted = false;
+        isGameFinished = true;
+
         yield return new WaitForSecondsRealtime(1.0f);
-        FinishGameUI();
     }
 
     private void FinishGameUI()
@@ -204,28 +207,5 @@ public class HackingMiniGame : MonoBehaviour
     public void ExitMiniGame()
     {
         SceneManager.LoadScene("MainGame");
-    }
-
-    // Used to convert hex values to decimal values and normalise them 
-    private float HexToFloatNormalised(string a_hex)
-    {
-        int dec = System.Convert.ToInt32(a_hex, 16);
-        return dec / 255f;
-    }
-
-    // Using the given hex string it returns it's color
-    private Color GetColourFromString(string a_hexString)
-    {
-        float red = HexToFloatNormalised(a_hexString.Substring(0, 2));
-        float green = HexToFloatNormalised(a_hexString.Substring(2, 2));
-        float blue = HexToFloatNormalised(a_hexString.Substring(4, 2));
-        float alpha = 1f;
-
-        if (a_hexString.Length >= 8)
-        {
-            alpha = HexToFloatNormalised(a_hexString.Substring(6, 2));
-        }
-
-        return new Color(red, green, blue, alpha);
     }
 }
