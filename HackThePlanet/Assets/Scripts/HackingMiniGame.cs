@@ -60,9 +60,9 @@ public class HackingMiniGame : MonoBehaviour
         {
             if (a_selectedNode == connection)
             {
+                a_selectedNode.GetComponent<Button>().interactable = false;
                 player.transform.position = a_selectedNode.transform.position;
                 playerCurrentNode = a_selectedNode;
-                //UpdateNodeHover();
             }
         }
 
