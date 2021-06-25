@@ -68,6 +68,11 @@ public class HackingMiniGame : MonoBehaviour
             startScreen.SetActive(false);
             MoveEnemy();
         }
+
+        if (isGameFinished)
+        {
+            StartCoroutine(EndGameDelay());
+        }
     }
 
     public void StartGame()
