@@ -72,7 +72,7 @@ public class HackingMiniGame : MonoBehaviour
 
         if (isGameFinished)
         {
-            StartCoroutine(EndGameDelay());
+            FinishGameUI();
         }
     }
 
@@ -153,8 +153,8 @@ public class HackingMiniGame : MonoBehaviour
         else
         {
             isGameFinished = true;
+            hasGameStarted = false;
             hasEnemyWon = true;
-            StartCoroutine(EndGameDelay());
         }
     }
 

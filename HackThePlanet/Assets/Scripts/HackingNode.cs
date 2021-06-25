@@ -87,7 +87,7 @@ public class HackingNode : MonoBehaviour
         else if (m_isStartNode || m_isEnemyStart)
         {
             m_selectedSprite = m_specialSprites[0];
-            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "0";
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "2";
         }
         else if (m_isEndNode)
         {
