@@ -280,7 +280,7 @@ MonoBehaviour:
     if you are found, you will be locked away forever in isolation.  "
   timeLapse: 0.05
   continueButton: {fileID: 268100324}
-  gameScene: {fileID: 102900000, guid: f4c02843f0963824f86b3ec4af85c617, type: 3}
+  gameScene: {fileID: 102900000, guid: 21ee137d03447a441a6e6d184ccab593, type: 3}
 --- !u!1 &268100324
 GameObject:
   m_ObjectHideFlags: 0
