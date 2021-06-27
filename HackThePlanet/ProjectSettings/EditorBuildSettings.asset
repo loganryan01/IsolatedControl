@@ -5,19 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Game/0 - MainMenu.unity
-    guid: 85075e652a102c140be40eccbb382137
   - enabled: 1
-    path: Assets/Scenes/Andy/Intro - ReWork.unity
-    guid: 596aa16704a77e249ac172efb549abd4
+    path: Assets/Scenes/Andy/Test Game/00 - MainMenu.unity
+    guid: 483e35cba6dbf144395edc565c4588b5
   - enabled: 1
-    path: Assets/Scenes/Game/2 - MainGame.unity
-    guid: f4c02843f0963824f86b3ec4af85c617
-  - enabled: 0
-    path: Assets/Scenes/Game/1 - StoryScene.unity
-    guid: 05b9dca31cbdbf041a67d5c6585cf08b
-  - enabled: 0
-    path: Assets/Scenes/Game/3 - MiniGame.unity
-    guid: 21ee137d03447a441a6e6d184ccab593
+    path: Assets/Scenes/Andy/Test Game/01 - StoryScene.unity
+    guid: 56cbbeae15d70874ab9cb9f780de4bc9
+  - enabled: 1
+    path: Assets/Scenes/Andy/Test Game/02 - MainGame.unity
+    guid: 941cb61287f0bd64ab9750c3c4c00e4c
+  - enabled: 1
+    path: Assets/Scenes/Andy/Test Game/03 - MiniGame.unity
+    guid: 57597699909ec34479713612db420c86
   m_configObjects: {}

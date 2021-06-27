@@ -14,7 +14,7 @@ public class TypewriterScript : MonoBehaviour
     private bool completeText = false;
 
     public GameObject continueButton;
-    public Object gameScene;
+    //public Object gameScene; //Testing (Original Line)
 
     void Start()
     {
@@ -31,7 +31,8 @@ public class TypewriterScript : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(gameScene.name);
+        //SceneManager.LoadScene(gameScene.name); //Testing (Original Line)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private IEnumerator BuildText()

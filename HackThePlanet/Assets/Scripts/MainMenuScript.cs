@@ -8,7 +8,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject fade;
     public Animator fadeEffect;
 
-    public Object gameScene;
+    //public Object gameScene; //This is not necessary while line 22 is commented out (Original Line)
 
     // Update is called once per frame
     void Update()
@@ -19,7 +19,8 @@ public class MainMenuScript : MonoBehaviour
             fadeEffect.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
                 Debug.Log("Playing Animation");
             else
-                SceneManager.LoadScene(gameScene.name);
+                //SceneManager.LoadScene(gameScene.name); //Edited this out to see if it makes a difference (Original Line)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //This is a new line to test if i can transition to the next scene during build
         }
     }
 
