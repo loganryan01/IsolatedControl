@@ -214,6 +214,7 @@ public class HackingMiniGame : MonoBehaviour
 
     public void ExitMiniGame()
     {
-        SceneManager.LoadScene("MainGame");
+        //SceneManager.LoadScene("MainGame"); //Working on a work around
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

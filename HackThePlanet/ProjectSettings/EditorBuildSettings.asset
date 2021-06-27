@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Andy/Test Game/01 - StoryScene.unity
     guid: 56cbbeae15d70874ab9cb9f780de4bc9
   - enabled: 1
-    path: Assets/Scenes/Andy/Test Game/02 - MainGame.unity
+    path: Assets/Scenes/Andy/Test Game/02 - MainGame - 1.unity
     guid: 941cb61287f0bd64ab9750c3c4c00e4c
   - enabled: 1
     path: Assets/Scenes/Andy/Test Game/03 - MiniGame.unity
     guid: 57597699909ec34479713612db420c86
+  - enabled: 1
+    path: Assets/Scenes/Andy/Test Game/04 - MainGame - 2.unity
+    guid: fc99bcbe05af0cf499d7e747f25f3910
   m_configObjects: {}
