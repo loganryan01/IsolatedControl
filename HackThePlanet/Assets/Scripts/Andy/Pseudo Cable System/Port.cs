@@ -14,9 +14,9 @@ public class Port : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out MovablePair CollideMoveable))
+        if (other.gameObject.TryGetComponent(out MovablePair CollidedMoveable))
         {
-            _ownerMatchEntity.PairObjectInteraction(IsEnter: false, CollideMoveable);
+            _ownerMatchEntity.PairObjectInteraction(IsEnter:false, CollidedMoveable);
         }
     }
 }
